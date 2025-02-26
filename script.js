@@ -54,6 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (element.tagName.toLowerCase() === 'input' || 
                     element.tagName.toLowerCase() === 'textarea') {
                     element.placeholder = text;
+                } else if (element.classList.contains('nav-item')) {
+                    // Para elementos del timeline, solo actualizar el texto dentro de .nav-text
+                    const navText = element.querySelector('.nav-text');
+                    if (navText) {
+                        navText.textContent = text;
+                    }
+                } else if (element.parentElement && element.parentElement.id === 'mobile-menu') {
+                    // Para elementos del menú móvil, solo actualizar el texto dentro de .mobile-menu-text
+                    const mobileMenuText = element.querySelector('.mobile-menu-text');
+                    if (mobileMenuText) {
+                        mobileMenuText.textContent = text;
+                    }
                 } else {
                     element.textContent = text;
                 }
@@ -77,6 +89,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (element.tagName.toLowerCase() === 'input' || 
                     element.tagName.toLowerCase() === 'textarea') {
                     element.placeholder = text;
+                } else if (element.classList.contains('nav-item')) {
+                    // Para elementos del timeline, solo actualizar el texto dentro de .nav-text
+                    const navText = element.querySelector('.nav-text');
+                    if (navText) {
+                        navText.textContent = text;
+                    }
+                } else if (element.parentElement && element.parentElement.id === 'mobile-menu') {
+                    // Para elementos del menú móvil, solo actualizar el texto dentro de .mobile-menu-text
+                    const mobileMenuText = element.querySelector('.mobile-menu-text');
+                    if (mobileMenuText) {
+                        mobileMenuText.textContent = text;
+                    }
                 } else {
                     element.textContent = text;
                 }

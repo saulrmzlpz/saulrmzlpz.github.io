@@ -171,8 +171,19 @@ body {
     transform: translateY(-2px);
 }
 
+#lang-toggle {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    min-width: 45px;
+    justify-content: center;
+}
+
+#lang-toggle:hover {
+    color: var(--primary-color);
+}
+
 .control-button.mobile-menu-btn {
-    display: flex;
+    display: none;
     background: transparent;
     color: var(--primary-color);
     padding: 0.5rem;
@@ -592,6 +603,38 @@ body.light-theme .mobile-menu::before {
 .skills {
     color: var(--text-color);
     font-style: italic;
+}
+
+.experience-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1rem 0;
+}
+
+.experience-tech-stack .tech-tag {
+    background: rgba(0, 247, 255, 0.1);
+    color: var(--primary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(0, 247, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.experience-tech-stack .tech-tag:hover {
+    background: rgba(0, 247, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+body.light-theme .experience-tech-stack .tech-tag {
+    background: rgba(0, 102, 255, 0.1);
+    border: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+body.light-theme .experience-tech-stack .tech-tag:hover {
+    background: rgba(0, 102, 255, 0.2);
 }
 
 .sub-experience {

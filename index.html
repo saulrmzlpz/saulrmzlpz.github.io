@@ -16,10 +16,10 @@
             <button id="theme-toggle" class="control-button" aria-label="Toggle theme">
                 <i class="fas fa-sun"></i>
             </button>
+            <button id="lang-toggle" class="control-button" aria-label="Toggle language">ES</button>
             <button id="mobile-menu-toggle" class="control-button mobile-menu-btn" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
-            <!-- <button id="lang-toggle" class="control-button" aria-label="Toggle language">ES</button> -->
         </div>
     </header>
 
@@ -69,7 +69,12 @@
                         <p class="company">VISE México · Full-time</p>
                         <p class="date">Feb 2022 - Present</p>
                         <p class="location">Mexico · On-site</p>
-                        <p class="skills">Skills: Flutter · Android · Git · Spring Boot</p>
+                        <div class="experience-tech-stack">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">iOS</span>
+                            <span class="tech-tag">Spring Boot</span>
+                        </div>
                         <ul class="achievements">
                             <li>Fuel control system development</li>
                             <li>Construction site material usage control</li>
@@ -82,19 +87,29 @@
                         <h3>Mobile Software Engineer</h3>
                         <p class="company">Inceptio · Full-time</p>
                         <p class="date">Nov 2021 - Feb 2022</p>
-                        <p class="skills">Skills: Android · Flutter · C# · Xamarin</p>
+                        <div class="experience-tech-stack">
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Xamarin</span>
+                        </div>
                     </div>
                     <div class="experience-card">
                         <h3>Mobile Application Developer</h3>
                         <p class="company">Dostop Access · Full-time</p>
                         <p class="date">Nov 2019 - Oct 2021</p>
-                        <p class="skills">Skills: Flutter · Android</p>
+                        <div class="experience-tech-stack">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">iOS</span>
+                            <span class="tech-tag">PHP</span>
+                        </div>
                     </div>
                     <div class="experience-card">
                         <h3>Novatec Group</h3>
                         <p class="date">2 years</p>
                         <div class="sub-experience">
-                            <h4>IT Manager</h4>
+                            <h4>IT Responsible</h4>
                             <p class="job-type">Full-time</p>
                             <p class="date">Aug 2019 - Nov 2019</p>
                             <p class="location">León, Mexico</p>
@@ -113,6 +128,10 @@
                         <div class="sub-experience">
                             <h4>Mobile Application Developer</h4>
                             <p class="date">Jun 2016 - Sept 2017</p>
+                            <div class="experience-tech-stack">
+                                <span class="tech-tag">Xamarin Android</span>
+                                <span class="tech-tag">Xamarin iOS</span>
+                            </div>
                         </div>
                         <div class="sub-experience">
                             <h4>QA Tester</h4>
@@ -265,25 +284,25 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="mobile-menu">
-        <a href="#about">
+        <a href="#about" data-en="About" data-es="Sobre mí">
             <i class="fas fa-user"></i>
-            <span>About</span>
+            <span class="mobile-menu-text">About</span>
         </a>
-        <a href="#experience">
+        <a href="#experience" data-en="Experience" data-es="Experiencia">
             <i class="fas fa-briefcase"></i>
-            <span>Experience</span>
+            <span class="mobile-menu-text">Experience</span>
         </a>
-        <a href="#skills">
+        <a href="#skills" data-en="Skills" data-es="Habilidades">
             <i class="fas fa-code"></i>
-            <span>Skills</span>
+            <span class="mobile-menu-text">Skills</span>
         </a>
-        <a href="#projects">
+        <a href="#projects" data-en="Projects" data-es="Proyectos">
             <i class="fas fa-project-diagram"></i>
-            <span>Projects</span>
+            <span class="mobile-menu-text">Projects</span>
         </a>
-        <a href="#contact">
+        <a href="#contact" data-en="Contact" data-es="Contacto">
             <i class="fas fa-envelope"></i>
-            <span>Contact</span>
+            <span class="mobile-menu-text">Contact</span>
         </a>
     </div>
 
