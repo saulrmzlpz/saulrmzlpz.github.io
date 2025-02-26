@@ -29,6 +29,77 @@ body.light-theme .timeline-nav {
     background: rgba(255, 255, 255, 0.2);
 }
 
+/* Specific styles for light theme projects section */
+body.light-theme .projects {
+    background: linear-gradient(to bottom, var(--bg-color), #e9ecef);
+}
+
+body.light-theme .project-card {
+    background: white;
+    border: 1px solid rgba(0, 102, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .project-card::before {
+    background: radial-gradient(circle at top right, rgba(0, 102, 255, 0.1), transparent);
+}
+
+body.light-theme .project-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1),
+                0 0 15px rgba(0, 102, 255, 0.2);
+    border-color: rgba(0, 102, 255, 0.3);
+}
+
+body.light-theme .project-header {
+    background: rgba(0, 102, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 102, 255, 0.1);
+}
+
+body.light-theme .project-icon {
+    background: rgba(0, 102, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 102, 255, 0.1);
+}
+
+body.light-theme .tech-tag {
+    background: rgba(0, 102, 255, 0.1);
+    border: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+body.light-theme .tech-tag:hover {
+    background: rgba(0, 102, 255, 0.2);
+}
+
+body.light-theme .project-link {
+    background: linear-gradient(135deg, var(--primary-color), #0099ff);
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+}
+
+body.light-theme .project-link:hover {
+    box-shadow: 0 6px 18px rgba(0, 102, 255, 0.3);
+}
+
+/* Flutter and .NET icons specific styles */
+.skill-card i.fab.fa-flutter {
+    color: #02569B;
+}
+
+body.light-theme .skill-card i.fab.fa-flutter {
+    color: #02569B;
+}
+
+.skill-card i.fab.fa-microsoft {
+    color: #512BD4;
+}
+
+body.light-theme .skill-card i.fab.fa-microsoft {
+    color: #512BD4;
+}
+
+/* Make sure all skill icons have consistent color in light theme */
+body.light-theme .skill-card i {
+    color: var(--primary-color);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -98,6 +169,28 @@ body {
 .control-button:hover {
     background: var(--card-hover);
     transform: translateY(-2px);
+}
+
+.control-button.mobile-menu-btn {
+    display: flex;
+    background: transparent;
+    color: var(--primary-color);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--primary-color);
+}
+
+.control-button.mobile-menu-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    transform: rotate(90deg);
 }
 
 /* Timeline Navigation */
@@ -201,8 +294,6 @@ body {
     color: var(--primary-color);
 }
 
-
-
 @media (max-width: 768px) {
     .header {
         padding: 1rem;
@@ -263,6 +354,130 @@ body {
     .nav-item:hover .nav-dot::after,
     .nav-item.active .nav-dot::after {
         transform: scale(1.2);
+    }
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    right: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--primary-color);
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+    backdrop-filter: blur(10px);
+    min-width: 220px;
+}
+
+.mobile-menu.active {
+    display: flex;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    width: 16px;
+    height: 16px;
+    background: var(--bg-color);
+    transform: rotate(45deg);
+    border-top: 1px solid var(--primary-color);
+    border-left: 1px solid var(--primary-color);
+    z-index: -1;
+}
+
+.mobile-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.9rem 1.2rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    background-color: var(--card-hover);
+    transform: translateX(5px);
+}
+
+.mobile-menu a:hover::before {
+    width: 100%;
+}
+
+.mobile-menu a i {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    width: 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu a:hover i {
+    transform: scale(1.2);
+}
+
+body.light-theme .mobile-menu {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .mobile-menu::before {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .control-button.mobile-menu-btn {
+        display: flex;
+    }
+    
+    .timeline-nav {
+        display: none;
+    }
+    
+    .container {
+        padding: calc(var(--header-height) + 1rem) 1.5rem 2rem;
+    }
+    
+    .hero, .experience, .skills, .projects, .contact {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .experience-card, .project-card, .skill-card {
+        padding: 1.5rem;
     }
 }
 
@@ -366,6 +581,35 @@ body {
 .achievements li {
     margin-bottom: 0.5rem;
     opacity: 0.9;
+}
+
+.location, .skills {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.8rem;
+}
+
+.skills {
+    color: var(--text-color);
+    font-style: italic;
+}
+
+.sub-experience {
+    margin-top: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--primary-color);
+}
+
+.sub-experience h4 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.job-type {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
 }
 
 /* Skills Section */

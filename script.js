@@ -44,7 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const newLang = currentLang === 'en' ? 'es' : 'en';
         
         body.setAttribute('data-lang', newLang);
-        langToggle.textContent = (newLang === 'en' ? 'ES' : 'EN');
+        if (langToggle) {
+            langToggle.textContent = (newLang === 'en' ? 'ES' : 'EN');
+        }
         
         elements.forEach(element => {
             const text = element.getAttribute(`data-${newLang}`);
@@ -64,7 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial language
     const savedLang = localStorage.getItem('lang') || 'en';
     body.setAttribute('data-lang', savedLang);
-    langToggle.textContent = (savedLang === 'en' ? 'ES' : 'EN');
+    if (langToggle) {
+        langToggle.textContent = (savedLang === 'en' ? 'ES' : 'EN');
+    }
     
     if (savedLang === 'es') {
         elements.forEach(element => {
@@ -80,7 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    langToggle.addEventListener('click', toggleLanguage);
+    if (langToggle) {
+        langToggle.addEventListener('click', toggleLanguage);
+    }
 
     // Timeline Navigation
     const sections = document.querySelectorAll('section[id]');
@@ -114,7 +120,59 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth',
                     block: 'start'
                 });
+                
+                // Close mobile menu if it's open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
             }
         });
     });
+    
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent document click from immediately closing the menu
+            mobileMenu.classList.toggle('active');
+            
+            // Change icon based on menu state
+            const icon = this.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target) && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Prevent clicks inside the menu from closing it
+        mobileMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // Close menu when a menu item is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    }
 });

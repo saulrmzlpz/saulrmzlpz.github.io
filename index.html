@@ -6,15 +6,18 @@
     <title>Saúl Ramírez | Mobile Developer</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
 </head>
 <body>
     <header class="header">
         <div class="header-controls">
             <button id="theme-toggle" class="control-button" aria-label="Toggle theme">
                 <i class="fas fa-sun"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="control-button mobile-menu-btn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
             </button>
             <!-- <button id="lang-toggle" class="control-button" aria-label="Toggle language">ES</button> -->
         </div>
@@ -63,8 +66,10 @@
                 <div class="experience-grid">
                     <div class="experience-card">
                         <h3>Mobile Software Engineer</h3>
-                        <p class="company">VISE México</p>
-                        <p class="date">Feb. 2022 - Present</p>
+                        <p class="company">VISE México · Full-time</p>
+                        <p class="date">Feb 2022 - Present</p>
+                        <p class="location">Mexico · On-site</p>
+                        <p class="skills">Skills: Flutter · Android · Git · Spring Boot</p>
                         <ul class="achievements">
                             <li>Fuel control system development</li>
                             <li>Construction site material usage control</li>
@@ -74,10 +79,45 @@
                         </ul>
                     </div>
                     <div class="experience-card">
-                        <h3>Internal Developer</h3>
-                        <p class="company">Fábricas de Calzado Andrea</p>
-                        <p class="date">2017 - 2022</p>
-                        <p>Started career in mobile development and enterprise systems</p>
+                        <h3>Mobile Software Engineer</h3>
+                        <p class="company">Inceptio · Full-time</p>
+                        <p class="date">Nov 2021 - Feb 2022</p>
+                        <p class="skills">Skills: Android · Flutter · C# · Xamarin</p>
+                    </div>
+                    <div class="experience-card">
+                        <h3>Mobile Application Developer</h3>
+                        <p class="company">Dostop Access · Full-time</p>
+                        <p class="date">Nov 2019 - Oct 2021</p>
+                        <p class="skills">Skills: Flutter · Android</p>
+                    </div>
+                    <div class="experience-card">
+                        <h3>Novatec Group</h3>
+                        <p class="date">2 years</p>
+                        <div class="sub-experience">
+                            <h4>IT Manager</h4>
+                            <p class="job-type">Full-time</p>
+                            <p class="date">Aug 2019 - Nov 2019</p>
+                            <p class="location">León, Mexico</p>
+                        </div>
+                        <div class="sub-experience">
+                            <h4>IT Assistant</h4>
+                            <p class="job-type">Part-time</p>
+                            <p class="date">Sept 2017 - Aug 2019</p>
+                            <p class="location">Mexico</p>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <h3>Grupo Andrea</h3>
+                        <p class="job-type">Part-time · 1 year</p>
+                        <p class="location">León, Mexico</p>
+                        <div class="sub-experience">
+                            <h4>Mobile Application Developer</h4>
+                            <p class="date">Jun 2016 - Sept 2017</p>
+                        </div>
+                        <div class="sub-experience">
+                            <h4>QA Tester</h4>
+                            <p class="date">Jun 2016 - Sept 2017</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -89,7 +129,7 @@
                         <h3>Mobile & Frontend</h3>
                         <div class="skills-grid">
                             <div class="skill-card">
-                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg" alt="Flutter" class="tech-icon">
+                                <i class="devicon-flutter-plain"></i>
                                 <h4>Flutter</h4>
                                 <p>Provider, Riverpod, Firebase</p>
                             </div>
@@ -103,7 +143,7 @@
                                 <h4>iOS</h4>
                             </div>
                             <div class="skill-card">
-                                <i class="fab fa-microsoft"></i>
+                                <i class="devicon-xamarin-original"></i>
                                 <h4>Xamarin</h4>
                                 <p>Android/iOS</p>
                             </div>
@@ -114,7 +154,7 @@
                         <h3>Backend & Databases</h3>
                         <div class="skills-grid">
                             <div class="skill-card">
-                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dotnetcore/dotnetcore-original.svg" alt=".NET Core" class="tech-icon">
+                                <i class="devicon-dotnetcore-plain"></i>
                                 <h4>.NET Core</h4>
                             </div>
                             <div class="skill-card">
@@ -221,7 +261,31 @@
 
         </main>
        
-    </div>|
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#about">
+            <i class="fas fa-user"></i>
+            <span>About</span>
+        </a>
+        <a href="#experience">
+            <i class="fas fa-briefcase"></i>
+            <span>Experience</span>
+        </a>
+        <a href="#skills">
+            <i class="fas fa-code"></i>
+            <span>Skills</span>
+        </a>
+        <a href="#projects">
+            <i class="fas fa-project-diagram"></i>
+            <span>Projects</span>
+        </a>
+        <a href="#contact">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+    </div>
 
 </body>
 </html>
