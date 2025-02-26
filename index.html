@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúl Ramírez | Mobile Developer</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-controls">
+            <button id="theme-toggle" class="control-button" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+            </button>
+            <!-- <button id="lang-toggle" class="control-button" aria-label="Toggle language">ES</button> -->
+        </div>
+    </header>
+
+    <nav class="timeline-nav">
+        <div class="nav-line"></div>
+        <a href="#about" class="nav-item" data-en="About" data-es="Sobre mí">
+            <span class="nav-dot"></span>
+            <span class="nav-text">About</span>
+        </a>
+        <a href="#experience" class="nav-item" data-en="Experience" data-es="Experiencia">
+            <span class="nav-dot"></span>
+            <span class="nav-text">Experience</span>
+        </a>
+        <a href="#skills" class="nav-item" data-en="Skills" data-es="Habilidades">
+            <span class="nav-dot"></span>
+            <span class="nav-text">Skills</span>
+        </a>
+        <a href="#projects" class="nav-item" data-en="Projects" data-es="Proyectos">
+            <span class="nav-dot"></span>
+            <span class="nav-text">Projects</span>
+        </a>
+        <a href="#contact" class="nav-item" data-en="Contact" data-es="Contacto">
+            <span class="nav-dot"></span>
+            <span class="nav-text">Contact</span>
+        </a>
+    </nav>
+
+    <div class="container">
+
+        <main class="main">
+            <section class="hero" id="about">
+                <div class="hero-content">
+                    <h1 class="glitch">Saúl Ramírez López</h1>
+                    <h2>Mobile Software Engineer</h2>
+                    <blockquote class="quote">
+                        <p>"Learning never exhausts the mind." — Leonardo da Vinci</p>
+                    </blockquote>
+                    <p class="typewriter">Software developer specialized in Flutter and mobile technologies</p>
+                </div>
+            </section>
+
+            <section class="experience" id="experience">
+                <h2>Professional Experience</h2>
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <h3>Mobile Software Engineer</h3>
+                        <p class="company">VISE México</p>
+                        <p class="date">Feb. 2022 - Present</p>
+                        <ul class="achievements">
+                            <li>Fuel control system development</li>
+                            <li>Construction site material usage control</li>
+                            <li>Corporate employee application</li>
+                            <li>Work hours reporting system</li>
+                            <li>Heavy machinery efficiency monitoring</li>
+                        </ul>
+                    </div>
+                    <div class="experience-card">
+                        <h3>Internal Developer</h3>
+                        <p class="company">Fábricas de Calzado Andrea</p>
+                        <p class="date">2017 - 2022</p>
+                        <p>Started career in mobile development and enterprise systems</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="skills" id="skills">
+                <h2>Technologies & Tools</h2>
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h3>Mobile & Frontend</h3>
+                        <div class="skills-grid">
+                            <div class="skill-card">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg" alt="Flutter" class="tech-icon">
+                                <h4>Flutter</h4>
+                                <p>Provider, Riverpod, Firebase</p>
+                            </div>
+                            <div class="skill-card">
+                                <i class="fab fa-android"></i>
+                                <h4>Android</h4>
+                                <p>Java/Kotlin</p>
+                            </div>
+                            <div class="skill-card">
+                                <i class="fab fa-apple"></i>
+                                <h4>iOS</h4>
+                            </div>
+                            <div class="skill-card">
+                                <i class="fab fa-microsoft"></i>
+                                <h4>Xamarin</h4>
+                                <p>Android/iOS</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3>Backend & Databases</h3>
+                        <div class="skills-grid">
+                            <div class="skill-card">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dotnetcore/dotnetcore-original.svg" alt=".NET Core" class="tech-icon">
+                                <h4>.NET Core</h4>
+                            </div>
+                            <div class="skill-card">
+                                <i class="fab fa-php"></i>
+                                <h4>PHP</h4>
+                            </div>
+                            <div class="skill-card">
+                                <i class="fas fa-database"></i>
+                                <h4>SQL Server</h4>
+                            </div>
+                            <div class="skill-card">
+                                <i class="fas fa-server"></i>
+                                <h4>Couchbase</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>DevOps & Tools</h3>
+                        <div class="skills-grid">
+                            <div class="skill-card">
+                                <i class="fab fa-jenkins"></i>
+                                <h4>Jenkins</h4>
+                            </div>
+                            <div class="skill-card">
+                                <i class="fab fa-docker"></i>
+                                <h4>Docker</h4>
+                            </div>
+                            <div class="skill-card">
+                                <i class="fab fa-git-alt"></i>
+                                <h4>Git Flow</h4>
+                            </div>
+                            <div class="skill-card">
+                                <i class="fab fa-gitlab"></i>
+                                <h4>GitLab Flow</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects" id="projects">
+                <h2 data-en="Featured Projects" data-es="Proyectos Destacados">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <i class="fas fa-microphone project-icon"></i>
+                            <h3>Fancy Audio Recorder</h3>
+                        </div>
+                        <div class="project-content">
+                            <p>A modern Flutter package for audio recording ready to use (Like instant soup).</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Dart</span>
+                                <span class="tech-tag">pub.dev</span>
+                                <span class="tech-tag">Audio Processing</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://pub.dev/packages/fancy_audio_recorder" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    View Package
+                                </a>
+                                <a href="https://github.com/saulrmzlpz/fancy_audio_recorder" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                    Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card coming-soon">
+                        <div class="project-header">
+                            <i class="fas fa-rocket project-icon"></i>
+                            <h3>New Projects Coming Soon</h3>
+                        </div>
+                        <div class="project-content">
+                            <p>Currently working on exciting new mobile and backend projects. Follow me on LinkedIn for updates!</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Mobile Dev</span>
+                                <span class="tech-tag">Innovation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact" id="contact">
+                <h2 data-en="Let's Connect" data-es="Conectemos">Let's Connect</h2>
+                <div class="social-links">
+                    <a href="https://github.com/saulrmzlpz" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>Github</span>
+                    </a>
+                    <a href="mailto:saulrmzlpz@outlook.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/saúl-ramírez-lópez-91572210a" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </section>
+
+
+        </main>
+       
+    </div>|
+
+</body>
+</html>
