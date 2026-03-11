@@ -1,0 +1,173 @@
+---
+---
+
+<section
+  id="about"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+>
+  <!-- Animated background -->
+  <div class="absolute inset-0 -z-10">
+    <div
+      class="absolute inset-0 dark:bg-slate-950 bg-slate-50 transition-colors duration-300"
+    >
+    </div>
+    <!-- Gradient orbs -->
+    <div
+      class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl animate-pulse-slow"
+    >
+    </div>
+    <div
+      class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-600/8 rounded-full blur-3xl animate-pulse-slow"
+      style="animation-delay: 2s;"
+    >
+    </div>
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-3xl"
+    >
+    </div>
+    <!-- Grid pattern -->
+    <div class="absolute inset-0 hero-grid opacity-30"></div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Greeting -->
+    <div class="reveal mb-4">
+      <span
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium bg-indigo-500/10 dark:bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 dark:text-indigo-400"
+      >
+        <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+        <span data-i18n="hero.greeting">Hi, I'm</span>
+      </span>
+    </div>
+
+    <!-- Name -->
+    <div class="reveal mb-4" style="transition-delay: 100ms;">
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight">
+        <span class="gradient-text">Saúl Ramírez</span>
+        <br />
+        <span class="dark:text-slate-100 text-slate-900">López</span>
+      </h1>
+    </div>
+
+    <!-- Role -->
+    <div class="reveal mb-6" style="transition-delay: 200ms;">
+      <h2
+        class="text-xl sm:text-2xl font-semibold dark:text-slate-300 text-slate-600"
+        data-i18n="hero.role"
+      >
+        Mobile Software Engineer
+      </h2>
+    </div>
+
+    <!-- Description -->
+    <div class="reveal mb-8" style="transition-delay: 300ms;">
+      <p
+        class="text-base sm:text-lg dark:text-slate-400 text-slate-500 max-w-xl mx-auto leading-relaxed"
+        data-i18n="hero.description"
+      >
+        Software developer specialized in Flutter and mobile technologies
+      </p>
+    </div>
+
+    <!-- Quote -->
+    <div class="reveal mb-10" style="transition-delay: 400ms;">
+      <blockquote
+        class="mx-auto max-w-lg px-6 py-4 rounded-xl bg-white/80 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm dark:shadow-none"
+      >
+        <p
+          class="text-sm italic dark:text-slate-400 text-slate-500 leading-relaxed"
+          data-i18n="hero.quote"
+        >
+          "Learning never exhausts the mind." — Leonardo da Vinci
+        </p>
+      </blockquote>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div
+      class="reveal flex flex-col sm:flex-row items-center justify-center gap-4"
+      style="transition-delay: 500ms;"
+    >
+      <a
+        href="#contact"
+        class="group flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all duration-300 hover:-translate-y-0.5"
+      >
+        <i class="fas fa-envelope text-xs"></i>
+        <span data-i18n="hero.contactBtn">Get in touch</span>
+      </a>
+      <a
+        href="#projects"
+        class="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border border-slate-700 dark:border-slate-700 hover:border-indigo-500/50 dark:text-slate-300 text-slate-700 hover:text-indigo-400 dark:hover:text-indigo-400 hover:bg-slate-800/40 dark:hover:bg-slate-800/40 transition-all duration-300 hover:-translate-y-0.5"
+      >
+        <i class="fas fa-rocket text-xs"></i>
+        <span data-i18n="hero.projectsBtn">View projects</span>
+      </a>
+    </div>
+
+    <!-- Social Quick Links -->
+    <div
+      class="reveal flex items-center justify-center gap-4 mt-10"
+      style="transition-delay: 600ms;"
+    >
+      <a
+        href="https://github.com/saulrmzlpz"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="w-10 h-10 flex items-center justify-center rounded-lg dark:text-slate-500 text-slate-400 hover:text-slate-100 dark:hover:text-slate-100 hover:bg-slate-800/60 dark:hover:bg-slate-800/60 transition-all duration-200 border border-transparent hover:border-slate-700"
+      >
+        <i class="fab fa-github text-lg"></i>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/saúl-ramírez-lópez-91572210a"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        class="w-10 h-10 flex items-center justify-center rounded-lg dark:text-slate-500 text-slate-400 hover:text-blue-400 dark:hover:text-blue-400 hover:bg-slate-800/60 dark:hover:bg-slate-800/60 transition-all duration-200 border border-transparent hover:border-slate-700"
+      >
+        <i class="fab fa-linkedin text-lg"></i>
+      </a>
+      <a
+        href="mailto:saulrmzlpz@outlook.com"
+        aria-label="Email"
+        class="w-10 h-10 flex items-center justify-center rounded-lg dark:text-slate-500 text-slate-400 hover:text-violet-400 dark:hover:text-violet-400 hover:bg-slate-800/60 dark:hover:bg-slate-800/60 transition-all duration-200 border border-transparent hover:border-slate-700"
+      >
+        <i class="fas fa-envelope text-lg"></i>
+      </a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div
+      class="reveal absolute bottom-8 left-1/2 -translate-x-1/2"
+      style="transition-delay: 700ms;"
+    >
+      <a
+        href="#experience"
+        class="flex flex-col items-center gap-1 text-slate-500 hover:text-indigo-400 transition-colors duration-200"
+        aria-label="Scroll down"
+      >
+        <span class="text-xs font-medium tracking-widest uppercase opacity-60">scroll</span>
+        <i class="fas fa-chevron-down text-xs animate-bounce"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-grid {
+    background-image: linear-gradient(
+        rgba(129, 140, 248, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(129, 140, 248, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  :global(html:not(.dark)) .hero-grid {
+    background-image: linear-gradient(
+        rgba(99, 102, 241, 0.06) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+  }
+</style>

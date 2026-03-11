@@ -1,0 +1,106 @@
+---
+const socials = [
+  {
+    href: 'https://github.com/saulrmzlpz',
+    icon: 'fab fa-github',
+    label: 'GitHub',
+    sublabel: 'saulrmzlpz',
+    color: 'hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-700 dark:hover:text-slate-100',
+    iconColor: 'text-slate-600 dark:text-slate-400',
+    iconBg: 'bg-slate-100 dark:bg-slate-800/60 group-hover:bg-slate-200 dark:group-hover:bg-slate-700/60',
+    external: true,
+  },
+  {
+    href: 'mailto:saulrmzlpz@outlook.com',
+    icon: 'fas fa-envelope',
+    label: 'Email',
+    sublabel: 'saulrmzlpz@outlook.com',
+    color: 'hover:border-violet-400 dark:hover:border-violet-500/50 hover:text-violet-600 dark:hover:text-violet-400',
+    iconColor: 'text-violet-500 dark:text-violet-400',
+    iconBg: 'bg-violet-50 dark:bg-violet-900/20 group-hover:bg-violet-100 dark:group-hover:bg-violet-900/30',
+    external: false,
+  },
+  {
+    href: 'https://www.linkedin.com/in/saúl-ramírez-lópez-91572210a',
+    icon: 'fab fa-linkedin',
+    label: 'LinkedIn',
+    sublabel: 'Saúl Ramírez López',
+    color: 'hover:border-blue-400 dark:hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400',
+    iconColor: 'text-blue-500 dark:text-blue-400',
+    iconBg: 'bg-blue-50 dark:bg-blue-900/20 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30',
+    external: true,
+  },
+];
+---
+
+<section id="contact" class="py-24 pb-32 relative">
+  <div class="section-bg absolute inset-0 -z-10"></div>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Section Header -->
+    <div class="reveal mb-16">
+      <h2
+        class="text-3xl sm:text-4xl font-bold mb-4"
+        data-i18n="contact.title"
+      >
+        Let's Connect
+      </h2>
+      <div
+        class="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500"
+      >
+      </div>
+    </div>
+
+    <!-- Social Links Grid -->
+    <div class="reveal grid sm:grid-cols-3 gap-4" style="transition-delay: 100ms;">
+      {
+        socials.map(({ href, icon, label, sublabel, color, iconColor, iconBg, external }, index) => (
+          <a
+            href={href}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noopener noreferrer' : undefined}
+            class={`social-card group flex flex-col items-center gap-3 p-6 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/60 ${color} backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+            style={`transition-delay: ${index * 80}ms`}
+          >
+            <div class={`w-12 h-12 flex items-center justify-center rounded-xl transition-colors duration-300 ${iconBg}`}>
+              <i class={`${icon} text-xl ${iconColor} group-hover:scale-110 transition-transform duration-300`} />
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-slate-800 dark:text-slate-200">
+                {label}
+              </p>
+              <p class="text-xs text-slate-400 dark:text-slate-500 mt-0.5 truncate max-w-[140px]">
+                {sublabel}
+              </p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Footer note -->
+    <div class="reveal mt-16 pt-8 border-t border-slate-200 dark:border-slate-800/60" style="transition-delay: 300ms;">
+      <p class="text-sm dark:text-slate-500 text-slate-400" data-i18n="contact.footer">
+        Hecho con 🖤 por mí
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-bg {
+    background: radial-gradient(
+      ellipse at 50% 100%,
+      rgba(99, 102, 241, 0.06) 0%,
+      transparent 60%
+    );
+  }
+
+  :global(html:not(.dark)) .social-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  :global(html:not(.dark)) .social-card:hover {
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.08);
+  }
+</style>

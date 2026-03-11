@@ -1,0 +1,119 @@
+---
+const navItems = [
+  { href: '#about', i18nKey: 'nav.about', label: 'About' },
+  { href: '#experience', i18nKey: 'nav.experience', label: 'Experience' },
+  { href: '#skills', i18nKey: 'nav.skills', label: 'Skills' },
+  { href: '#projects', i18nKey: 'nav.projects', label: 'Projects' },
+  { href: '#contact', i18nKey: 'nav.contact', label: 'Contact' },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div
+    class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"
+  >
+    <div
+      class="flex items-center justify-between h-16 backdrop-blur-xl bg-white/90 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/50 rounded-b-2xl px-6 transition-all duration-300"
+      id="header-inner"
+    >
+      <!-- Logo / Name -->
+      <a
+        href="#about"
+        class="font-bold text-base gradient-text shrink-0 hover:opacity-80 transition-opacity tracking-tight"
+      >
+        Saúl Ramírez
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        {
+          navItems.map(({ href, i18nKey, label }) => (
+            <a
+              href={href}
+              data-nav-section={href.slice(1)}
+              class="nav-link group flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all duration-200"
+            >
+              <span
+                class="nav-dot w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-indigo-400 transition-all duration-200 shrink-0"
+              />
+              <span data-i18n={i18nKey} class="nav-label">
+                {label}
+              </span>
+            </a>
+          ))
+        }
+      </nav>
+
+      <!-- Controls -->
+      <div class="flex items-center gap-2">
+        <!-- Theme Toggle -->
+        <button
+          id="theme-toggle"
+          aria-label="Toggle theme"
+          class="w-9 h-9 flex items-center justify-center rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800/60 transition-all duration-200"
+        >
+          <i class="fas fa-sun text-sm"></i>
+        </button>
+
+        <!-- Lang Toggle -->
+        <button
+          id="lang-toggle"
+          aria-label="Toggle language"
+          class="px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider text-slate-500 hover:text-indigo-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-indigo-400 dark:hover:bg-slate-800/60 border border-slate-300 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-500/50 transition-all duration-200"
+        >
+          ES
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          id="mobile-menu-toggle"
+          aria-label="Toggle menu"
+          class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800/60 transition-all duration-200"
+        >
+          <i class="fas fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden mx-4 mt-1 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800/80 shadow-xl dark:shadow-none overflow-hidden"
+  >
+    {
+      navItems.map(({ href, i18nKey, label }, index) => (
+        <a
+          href={href}
+          data-nav-section={href.slice(1)}
+          class="flex items-center gap-3 px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800/60 transition-all duration-200 border-b border-slate-100 dark:border-slate-800/50 last:border-0"
+          style={`animation-delay: ${index * 50}ms`}
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-500/50 shrink-0" />
+          <span data-i18n={i18nKey}>{label}</span>
+        </a>
+      ))
+    }
+  </div>
+</header>
+
+<style>
+  /* Scroll-aware header */
+  #site-header.scrolled #header-inner {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  :global(.dark) #site-header.scrolled #header-inner {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+</script>

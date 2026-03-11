@@ -1,0 +1,336 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Saúl Ramírez | Mobile Developer',
+  description = 'Mobile Software Engineer specialized in Flutter and mobile technologies',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'light' || (!saved && !prefersDark)) {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+
+  <body
+    class="bg-slate-950 text-slate-100 font-sans antialiased dark:bg-slate-950 dark:text-slate-100"
+  >
+    <slot />
+  </body>
+</html>
+
+<script>
+  import { translations, type Lang } from '../i18n/translations';
+
+  function getLang(): Lang {
+    return (localStorage.getItem('lang') as Lang) || 'en';
+  }
+
+  function getNestedValue(obj: Record<string, unknown>, path: string): string {
+    return path
+      .split('.')
+      .reduce((acc: unknown, key: string) => {
+        if (acc && typeof acc === 'object') {
+          return (acc as Record<string, unknown>)[key];
+        }
+        return undefined;
+      }, obj) as string;
+  }
+
+  function applyTranslations(lang: Lang) {
+    const t = translations[lang] as unknown as Record<string, unknown>;
+    document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (!key) return;
+      const text = getNestedValue(t, key);
+      if (text) el.textContent = text;
+    });
+
+    const btn = document.getElementById('lang-toggle');
+    if (btn) btn.textContent = lang === 'en' ? 'ES' : 'EN';
+
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  function setLang(lang: Lang) {
+    localStorage.setItem('lang', lang);
+    applyTranslations(lang);
+  }
+
+  function initTheme() {
+    const themeBtn = document.getElementById('theme-toggle');
+    const icon = themeBtn?.querySelector('i');
+
+    function updateIcon() {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (icon) {
+        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+      }
+    }
+
+    updateIcon();
+
+    themeBtn?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (isDark) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      updateIcon();
+    });
+  }
+
+  function initLang() {
+    const lang = getLang();
+    applyTranslations(lang);
+
+    document.getElementById('lang-toggle')?.addEventListener('click', () => {
+      const current = getLang();
+      setLang(current === 'en' ? 'es' : 'en');
+    });
+  }
+
+  function initNav() {
+    const sections = document.querySelectorAll<HTMLElement>('section[id]');
+    const navLinks = document.querySelectorAll<HTMLElement>('[data-nav-section]');
+
+    function onScroll() {
+      const scrollY = window.scrollY + window.innerHeight * 0.4;
+      sections.forEach((section) => {
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (scrollY >= top && scrollY < bottom) {
+          navLinks.forEach((link) => {
+            link.classList.toggle('active-nav', link.getAttribute('data-nav-section') === id);
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  function initMobileMenu() {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+
+    toggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu?.classList.toggle('hidden');
+      const icon = toggle.querySelector('i');
+      if (icon) {
+        icon.className = menu?.classList.contains('hidden') ? 'fas fa-bars' : 'fas fa-times';
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (menu && toggle && !menu.contains(e.target as Node) && !toggle.contains(e.target as Node)) {
+        menu.classList.add('hidden');
+        const icon = toggle.querySelector('i');
+        if (icon) icon.className = 'fas fa-bars';
+      }
+    });
+
+    menu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        const icon = toggle?.querySelector('i');
+        if (icon) icon.className = 'fas fa-bars';
+      });
+    });
+  }
+
+  function initScrollReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    initLang();
+    initNav();
+    initMobileMenu();
+    initScrollReveal();
+  });
+</script>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Light mode overrides */
+  html:not(.dark) body {
+    background-color: #eef1f8;
+    color: #0f172a;
+  }
+
+  /* Scroll reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #818cf8 0%, #a78bfa 40%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  html:not(.dark) .gradient-text {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 40%, #0891b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Active nav link — dark mode */
+  .active-nav .nav-dot {
+    background-color: #818cf8;
+    box-shadow: 0 0 12px rgba(129, 140, 248, 0.7);
+    transform: scale(1.3);
+  }
+
+  .active-nav .nav-label {
+    color: #818cf8;
+    opacity: 1 !important;
+  }
+
+  /* Active nav link — light mode */
+  html:not(.dark) .active-nav .nav-dot {
+    background-color: #4f46e5;
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.4);
+  }
+
+  html:not(.dark) .active-nav .nav-label {
+    color: #4f46e5;
+  }
+
+  /* Scrollbar — dark */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #818cf8;
+  }
+
+  /* Scrollbar — light */
+  html:not(.dark) ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  html:not(.dark) ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+  }
+
+  html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+    background: #4f46e5;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: rgba(129, 140, 248, 0.3);
+    color: #f1f5f9;
+  }
+
+  html:not(.dark) ::selection {
+    background-color: rgba(79, 70, 229, 0.15);
+    color: #0f172a;
+  }
+
+  /* Timeline connector line animation */
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 6px rgba(129, 140, 248, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 18px rgba(129, 140, 248, 0.8);
+    }
+  }
+
+  .timeline-dot-active {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+</style>

@@ -1,0 +1,22 @@
+# Build output
+dist/
+.output/
+
+# Dependencies
+node_modules/
+
+# Astro
+.astro/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*

@@ -1,0 +1,326 @@
+---
+const jobs = [
+  {
+    titleKey: 'experience.vise_title',
+    titleDefault: 'Mobile Software Engineer',
+    companyKey: 'experience.vise_company',
+    companyDefault: 'VISE México · Full-time',
+    periodKey: 'experience.vise_period',
+    periodDefault: 'Feb 2022 – Present',
+    locationKey: 'experience.vise_location',
+    locationDefault: 'Mexico · On-site',
+    tags: ['Flutter', 'Android', 'iOS', 'Spring Boot'],
+    achievements: [
+      { key: 'experience.vise_ach1', default: 'Fuel control system development' },
+      { key: 'experience.vise_ach2', default: 'Construction site material usage control' },
+      { key: 'experience.vise_ach3', default: 'Corporate employee application' },
+      { key: 'experience.vise_ach4', default: 'Work hours reporting system' },
+      { key: 'experience.vise_ach5', default: 'Heavy machinery efficiency monitoring' },
+    ],
+    current: true,
+  },
+  {
+    titleKey: 'experience.inceptio_title',
+    titleDefault: 'Mobile Software Engineer',
+    companyKey: 'experience.inceptio_company',
+    companyDefault: 'Inceptio · Full-time',
+    periodKey: 'experience.inceptio_period',
+    periodDefault: 'Nov 2021 – Feb 2022',
+    tags: ['Android', 'Flutter', 'C#', 'Xamarin'],
+    achievements: [],
+    current: false,
+  },
+  {
+    titleKey: 'experience.dostop_title',
+    titleDefault: 'Mobile Application Developer',
+    companyKey: 'experience.dostop_company',
+    companyDefault: 'Dostop Access · Full-time',
+    periodKey: 'experience.dostop_period',
+    periodDefault: 'Nov 2019 – Oct 2021',
+    tags: ['Flutter', 'Android', 'iOS', 'PHP'],
+    achievements: [],
+    current: false,
+  },
+  {
+    groupCompanyKey: 'experience.novatec_company',
+    groupCompanyDefault: 'Novatec Group',
+    groupPeriodKey: 'experience.novatec_period',
+    groupPeriodDefault: '2 years',
+    isGroup: true,
+    subRoles: [
+      {
+        titleKey: 'experience.novatec_it_title',
+        titleDefault: 'IT Responsible',
+        typeKey: 'experience.novatec_it_type',
+        typeDefault: 'Full-time',
+        periodKey: 'experience.novatec_it_period',
+        periodDefault: 'Aug 2019 – Nov 2019',
+        locationKey: 'experience.novatec_it_location',
+        locationDefault: 'León, Mexico',
+      },
+      {
+        titleKey: 'experience.novatec_assistant_title',
+        titleDefault: 'IT Assistant',
+        typeKey: 'experience.novatec_assistant_type',
+        typeDefault: 'Part-time',
+        periodKey: 'experience.novatec_assistant_period',
+        periodDefault: 'Sep 2017 – Aug 2019',
+        locationKey: 'experience.novatec_assistant_location',
+        locationDefault: 'Mexico',
+      },
+    ],
+  },
+  {
+    groupCompanyKey: 'experience.andrea_company',
+    groupCompanyDefault: 'Grupo Andrea',
+    groupTypeKey: 'experience.andrea_type',
+    groupTypeDefault: 'Part-time · 1 year',
+    groupLocationKey: 'experience.andrea_location',
+    groupLocationDefault: 'León, Mexico',
+    isGroup: true,
+    subRoles: [
+      {
+        titleKey: 'experience.andrea_dev_title',
+        titleDefault: 'Mobile Application Developer',
+        periodKey: 'experience.andrea_dev_period',
+        periodDefault: 'Jun 2016 – Sep 2017',
+        tags: ['Xamarin Android', 'Xamarin iOS'],
+      },
+      {
+        titleKey: 'experience.andrea_qa_title',
+        titleDefault: 'QA Tester',
+        periodKey: 'experience.andrea_qa_period',
+        periodDefault: 'Jun 2016 – Sep 2017',
+      },
+    ],
+  },
+];
+---
+
+<section id="experience" class="py-24 relative">
+  <div class="section-bg absolute inset-0 -z-10"></div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="reveal text-center mb-16">
+      <h2
+        class="text-3xl sm:text-4xl font-bold mb-4"
+        data-i18n="experience.title"
+      >
+        Professional Experience
+      </h2>
+      <div
+        class="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+      >
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Vertical line -->
+      <div
+        class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/60 via-violet-500/30 to-transparent dark:from-indigo-500/60 dark:via-violet-500/30 hidden sm:block"
+      >
+      </div>
+
+      <div class="space-y-8">
+        {
+          jobs.map((job: any, index: number) => (
+            <div class="reveal" style={`transition-delay: ${index * 80}ms`}>
+              {!job.isGroup ? (
+                /* Standard job card */
+                <div class="sm:pl-16 relative group">
+                  {/* Timeline dot */}
+                  <div
+                    class={`absolute left-3.5 top-5 w-5 h-5 rounded-full border-2 hidden sm:flex items-center justify-center transition-all duration-300 ${
+                      job.current
+                        ? 'border-indigo-400 bg-indigo-400/20 timeline-dot-active'
+                        : 'border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 group-hover:border-violet-400'
+                    }`}
+                  >
+                    {job.current && (
+                      <span class="w-2 h-2 rounded-full bg-indigo-400" />
+                    )}
+                  </div>
+
+                  <div class="job-card rounded-2xl p-6 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/60 hover:border-indigo-400/50 dark:hover:border-indigo-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/5">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                      <div>
+                        <h3
+                          class="font-bold text-lg dark:text-slate-100 text-slate-900"
+                          data-i18n={job.titleKey}
+                        >
+                          {job.titleDefault}
+                        </h3>
+                        <p
+                          class="text-sm font-medium text-indigo-600 dark:text-indigo-400"
+                          data-i18n={job.companyKey}
+                        >
+                          {job.companyDefault}
+                        </p>
+                      </div>
+                      <div class="flex flex-col items-start sm:items-end gap-1 shrink-0">
+                        <span
+                          class={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full font-medium ${
+                            job.current
+                              ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
+                              : 'bg-slate-100 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/50'
+                          }`}
+                          data-i18n={job.periodKey}
+                        >
+                          {job.current && (
+                            <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                          )}
+                          {job.periodDefault}
+                        </span>
+                        {job.locationKey && (
+                          <span
+                            class="text-xs dark:text-slate-500 text-slate-400 flex items-center gap-1"
+                            data-i18n={job.locationKey}
+                          >
+                            {job.locationDefault}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {job.tags && job.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-2 mb-4">
+                        {job.tags.map((tag: string) => (
+                          <span class="tech-tag px-2.5 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700/50 hover:border-indigo-400 dark:hover:border-indigo-500/40 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors duration-200">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {job.achievements && job.achievements.length > 0 && (
+                      <ul class="space-y-1.5">
+                        {job.achievements.map((ach: any) => (
+                          <li class="flex items-start gap-2 text-sm dark:text-slate-400 text-slate-600">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-violet-500/60 shrink-0" />
+                            <span data-i18n={ach.key}>{ach.default}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                /* Group company card */
+                <div class="sm:pl-16 relative group">
+                  <div class="absolute left-3.5 top-5 w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 hidden sm:flex items-center justify-center group-hover:border-violet-400 transition-all duration-300" />
+
+                  <div class="job-card rounded-2xl p-6 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/60 hover:border-indigo-400/50 dark:hover:border-indigo-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/5">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-5">
+                      <div>
+                        <h3
+                          class="font-bold text-lg dark:text-slate-100 text-slate-900"
+                          data-i18n={job.groupCompanyKey}
+                        >
+                          {job.groupCompanyDefault}
+                        </h3>
+                        {job.groupTypeKey && (
+                          <p
+                            class="text-sm dark:text-slate-400 text-slate-500"
+                            data-i18n={job.groupTypeKey}
+                          >
+                            {job.groupTypeDefault}
+                          </p>
+                        )}
+                        {job.groupLocationKey && (
+                          <p
+                            class="text-xs dark:text-slate-500 text-slate-400"
+                            data-i18n={job.groupLocationKey}
+                          >
+                            {job.groupLocationDefault}
+                          </p>
+                        )}
+                      </div>
+                      {job.groupPeriodKey && (
+                        <span
+                          class="text-xs px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/50 shrink-0 h-fit"
+                          data-i18n={job.groupPeriodKey}
+                        >
+                          {job.groupPeriodDefault}
+                        </span>
+                      )}
+                    </div>
+
+                    <div class="space-y-4 pl-4 border-l-2 border-slate-200 dark:border-slate-700/50">
+                      {job.subRoles.map((sub: any) => (
+                        <div>
+                          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
+                            <div>
+                              <h4
+                                class="font-semibold text-sm dark:text-slate-200 text-slate-800"
+                                data-i18n={sub.titleKey}
+                              >
+                                {sub.titleDefault}
+                              </h4>
+                              {sub.typeKey && (
+                                <p
+                                  class="text-xs dark:text-slate-500 text-slate-400"
+                                  data-i18n={sub.typeKey}
+                                >
+                                  {sub.typeDefault}
+                                </p>
+                              )}
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                              <span
+                                class="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/50 shrink-0"
+                                data-i18n={sub.periodKey}
+                              >
+                                {sub.periodDefault}
+                              </span>
+                              {sub.locationKey && (
+                                <span
+                                  class="text-xs dark:text-slate-500 text-slate-400"
+                                  data-i18n={sub.locationKey}
+                                >
+                                  {sub.locationDefault}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          {sub.tags && (
+                            <div class="flex flex-wrap gap-1.5">
+                              {sub.tags.map((tag: string) => (
+                                <span class="tech-tag px-2 py-0.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700/50 hover:border-indigo-400 dark:hover:border-indigo-500/40 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors duration-200">
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-bg {
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(99, 102, 241, 0.04) 0%,
+      transparent 60%
+    );
+  }
+
+  :global(html:not(.dark)) .job-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  :global(html:not(.dark)) .job-card:hover {
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.08);
+  }
+</style>
